@@ -12,7 +12,7 @@ public Plugin myinfo =
 {
 	name = "[Admin Menu] Refresh Maplist and Mapcycle",
 	author = "1mpulse (skype:potapovdima1)",
-	version = "1.0.0",
+	version = "1.0.1",
 	url = "http://plugins.thebestcsgo.ru"
 };
 
@@ -65,9 +65,7 @@ void StartRefresh(int iClient)
 		FileType type;
 		while(hMaps.GetNext(sMap, sizeof(sMap), type))
 		{
-			if(StrEqual(".", sMap, false) || StrEqual("..", sMap, false)) continue;
-			
-			if(type == FileType_File && StrContains(sMap, ".bsp", true) != -1)
+			if(type == FileType_File && StrEqual(sMap, ".bsp", true))
 			{
 				ReplaceString(sMap, sizeof(sMap), ".bsp", "", false);
 				g_hMaps.PushString(sMap);
